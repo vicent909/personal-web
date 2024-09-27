@@ -3,21 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #F8F8F8;
   --foreground: #171717;
+  --primary: #474350;
+  --secondary: #F8F8F8;
+  --secondary-hover: #e7e7e7;
+  --font-geist: "--font-geist-sans";
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #eaeaea;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: var(--font-geist); */
 }
 
 @layer utilities {
@@ -25,3 +29,152 @@ body {
     text-wrap: balance;
   }
 }
+
+.test{
+  font-family: var(--font-geist);
+}
+
+.image-home{
+  border-radius: 200em;
+}
+
+.home-container{
+  height: -80px;
+}
+
+.navbar-brand{
+  /* font-family: "--font-geist-mono"; */
+  /* font-family: var(--font-geist); */
+}
+
+.btn-normal{
+  background-color: var(--primary);
+  color: var(--secondary);
+  width: 10em;
+  transition: 0.3s ease;
+}
+
+.btn-normal:hover{
+  width: 11em;
+  /* transform: scale(1.1, 1.1); */
+}
+
+.btn-outline{
+  border-color: var(--primary);
+  color: var(--primary) ;
+  width: 10em;
+  transition: 0.4s ease;
+}
+
+.btn-outline-scrolled{
+  border-color: var(--secondary);
+  color: var(--secondary) ;
+  width: 10em;
+  transition: 0.4s ease;
+}
+
+.btn-outline:hover{
+  width: 11em;
+}
+
+.btn-outline-scrolled:hover{
+  width: 11em;
+}
+
+.navbar-link{
+  position: relative;
+  height: 100%;
+}
+
+.navbar-link:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  background: var(--primary);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-link:hover::before{
+  width: 100%;
+}
+
+.navbar-link-scrolled{
+  position: relative;
+  height: 100%;
+  color: var(--secondary);
+}
+
+.navbar-link-scrolled:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  background: var(--secondary);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-link-scrolled:hover::before{
+  width: 100%;
+}
+
+.navbar{
+  position: sticky;
+  top: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.scrolled{
+  content: "";
+  background-color: var(--primary);
+  opacity: 95%;
+}
+
+.section-2{
+  background-color: var(--primary);
+}
+
+.text-secondary{
+  color: var(--secondary);
+}
+
+.card-project{
+  background-color: var(--secondary);
+  /* box-shadow: rgb(0, 0, 0) 10px 10px 2.6px; */
+  transition: 0.5s ease;
+}
+
+.card-project:hover{
+  background-color: var(--secondary-hover);
+  box-shadow: rgb(0, 0, 0) 15px 15px 2.6px;
+  transform: translateX(-10px) translateY(-10px);
+}
+
+.other-projects{
+  position: relative;
+  height: 100%;
+  color: var(--secondary);
+  padding-inline: 5px;
+  padding-bottom: 10px;
+  transition: 0.3s ease;
+}
+
+.other-projects:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  background: var(--secondary);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.other-projects:hover::before{
+  width: 100%;
+}
+
