@@ -1,22 +1,12 @@
 "use client";
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  Link,
-  Button,
-} from "@nextui-org/react";
+import { Link, Button } from "@nextui-org/react";
 import img from "../assets/90x90.jpg";
 import parkmates from "../assets/1.png";
 import vttravel from "../assets/vt.gif";
 import tricky from "../assets/trickyapp.gif";
 import Image from "next/image";
 import { FaChevronRight } from "react-icons/fa";
-// import { Image } from "react";
-// import Image from "next/image";
 
 export default function Home() {
   return (
