@@ -1,22 +1,23 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; 
 
 :root {
   --background: #F8F8F8;
   --foreground: #171717;
   --primary: #474350;
+  --primary-hover: #5b5863;
   --secondary: #F8F8F8;
   --secondary-hover: #e7e7e7;
   --font-geist: "--font-geist-sans";
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #eaeaea;
   }
-}
+} */
 
 body {
   color: var(--foreground);
@@ -141,6 +142,13 @@ body {
 .text-secondary{
   color: var(--secondary);
 }
+.text-secondary-placeholder{
+  color: var(--secondary);
+}
+
+.text-primary{
+  color: var(--primary);
+}
 
 .card-project{
   background-color: var(--secondary);
@@ -178,3 +186,103 @@ body {
   width: 100%;
 }
 
+.section-about{
+  background-color: var(--secondary);
+}
+
+.about-primary{
+  background-color: var(--primary);
+  border-radius: 1em;
+}
+
+.div-about{
+  transition: 0.5s ease;
+  border-radius: 1em;
+  .image-about{
+    filter: grayscale(1);
+  }
+}
+
+.div-about:hover{
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  /* border-width: 1px; */
+  border-radius: 1em;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px; */
+  .image-about{
+    filter: grayscale(0);
+  }
+}
+
+.div-primary{
+  background-color: var(--primary);
+}
+.div-primary-hover{
+  background-color: var(--primary-hover);
+}
+
+.div-secondary{
+  background-color: var(--secondary);
+}
+
+.other-projects-secondary{
+  position: relative;
+  height: 100%;
+  color: var(--primary);
+  padding-inline: 5px;
+  padding-bottom: 10px;
+  transition: 0.3s ease;
+}
+
+.other-projects-secondary:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  background: var(--primary);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.other-projects-secondary:hover::before{
+  width: 100%;
+}
+
+.card-contact{
+  position: relative;
+  transition: all 1s ease;
+  transform-style: preserve-3d;
+}
+
+.front{
+  /* position: absolute; */
+  backface-visibility: hidden;
+}
+
+.back{
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  display: none;
+  height: 100%;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+}
+
+.card-contact.flipped{
+  transform: rotateY(180deg);
+  .front{
+    visibility: hidden;
+  }
+
+  .back{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

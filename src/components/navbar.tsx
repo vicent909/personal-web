@@ -13,7 +13,7 @@ import {
 } from "@nextui-org/react";
 
 export default function NavBar() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -43,7 +43,7 @@ export default function NavBar() {
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
+          className={scrolled ? "sm:hidden text-secondary" : "sm:hidden text-primary"}
         />
         <NavbarBrand>
           <p
@@ -88,7 +88,7 @@ export default function NavBar() {
         <NavbarItem>
           <Link
             color="foreground"
-            href="#"
+            href="/#about"
             className={
               scrolled
                 ? "navbar-link-scrolled font-mono py-1"
@@ -101,7 +101,7 @@ export default function NavBar() {
         <NavbarItem>
           <Link
             color="foreground"
-            href="#"
+            href="/#contact"
             className={
               scrolled
                 ? "navbar-link-scrolled font-mono py-1"
@@ -152,6 +152,22 @@ export default function NavBar() {
             onClick={() => setIsMenuOpen(false)}
           >
             Works
+          </Link>
+          <Link
+            color="foreground"
+            href="/#about"
+            className={"navbar-link font-mono py-1"}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About
+          </Link>
+          <Link
+            color="foreground"
+            href="/#contact"
+            className={"navbar-link font-mono py-1"}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>
