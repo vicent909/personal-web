@@ -10,7 +10,14 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Link,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Button,
 } from "@nextui-org/react";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { redirect, useRouter } from "next/navigation";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,16 +42,57 @@ export default function NavBar() {
     };
   }, []);
 
+  const router = useRouter();
+
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       className={scrolled === true ? "navbar scrolled" : "navbar"}
     >
       <NavbarContent>
-        <NavbarMenuToggle
+        {/* <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className={scrolled ? "sm:hidden text-secondary" : "sm:hidden text-primary"}
-        />
+          className={
+            scrolled ? "sm:hidden text-secondary" : "sm:hidden text-primary"
+          }
+          onClick={() => setIsMenuOpen(isMenuOpen ? false : true)}
+        /> */}
+        <Dropdown className="sm:hidden">
+          <DropdownTrigger className="sm:hidden">
+            <Button variant="shadow" className="w-fit px-0" endContent={<RxHamburgerMenu />}></Button>
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Dynamic Actions" onAction={(key) => router.push('/#'+key)}>
+            {/* {(item) => (
+              <DropdownItem
+                key={item.key}
+                color={item.key === "delete" ? "danger" : "default"}
+                className={item.key === "delete" ? "text-danger" : ""}
+              >
+                {item.label}
+              </DropdownItem>
+            )} */}
+            <DropdownItem
+              key="home"
+            >
+              Home
+            </DropdownItem>
+            <DropdownItem
+              key="projects"
+            >
+              Projects
+            </DropdownItem>
+            <DropdownItem
+              key="about"
+            >
+              About
+            </DropdownItem>
+            <DropdownItem
+              key="contact"
+            >
+              Contact me
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
         <NavbarBrand>
           <p
             className={

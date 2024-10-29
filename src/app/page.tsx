@@ -68,14 +68,14 @@ export default function Home() {
 
   return (
     <>
-      <section className="w-3/4 mx-auto">
+      <section id="home" className="w-3/4 mx-auto">
         <div className="py-8 sm:py-32 flex flex-col lg:flex-row home-container items-center lg:justify-center gap-8">
           <Image
             src={img}
             width={400}
             height={400}
             alt="image"
-            className="image-home"
+            className="image-home grayscale hover:grayscale-0"
             data-aos="fade-right"
           />
           <div data-aos="fade-left">
