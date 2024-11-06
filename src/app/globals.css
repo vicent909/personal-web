@@ -57,6 +57,7 @@ body {
 
 .btn-normal:hover{
   width: 11em;
+  rotate: -8deg;
   /* transform: scale(1.1, 1.1); */
 }
 
@@ -76,6 +77,7 @@ body {
 
 .btn-outline:hover{
   width: 11em;
+  rotate: 8deg;
 }
 
 .btn-outline-scrolled:hover{

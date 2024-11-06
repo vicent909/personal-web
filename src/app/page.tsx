@@ -18,6 +18,7 @@ import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import sendEmail from "@/components/email";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import the AOS CSS file
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [contact, setContact] = useState({
@@ -66,6 +67,9 @@ export default function Home() {
     });
   }, []);
 
+  const text =
+    "I'm a passionate web and mobile (React Native) developer with a knack for creating functional and visually appealing websites.";
+
   return (
     <>
       <section id="home" className="w-3/4 mx-auto">
@@ -75,7 +79,7 @@ export default function Home() {
             width={400}
             height={400}
             alt="image"
-            className="image-home grayscale hover:grayscale-0"
+            className="image-home"
             data-aos="fade-right"
           />
           <div data-aos="fade-left">
@@ -84,8 +88,41 @@ export default function Home() {
               Full Stack JavaScript Developer
             </p>
             <p className="navbar-brand font-mono text-lg mt-4">
-              I&apos;m a passionate web and mobile (React Native) developer with
-              a knack for creating functional and visually appealing websites.
+              {/* I&apos;m a passionate web and mobile (React Native) developer with
+              a knack for creating functional and visually appealing websites. */}
+              <span>
+                {text.split("").map((e, i) => {
+                  return (
+                    <motion.span key={i} className="relative">
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{
+                          opacity: 1,
+                        }}
+                        transition={{
+                          delay: i * 0.025,
+                          duration: 0,
+                        }}
+                      >
+                        {e}
+                      </motion.span>
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{
+                          opacity: [0, 1, 0],
+                        }}
+                        transition={{
+                          delay: i * 0.025,
+                          times: [0, 0.1, 1],
+                          duration: 0.125,
+                          ease: "easeInOut",
+                        }}
+                        className="absolute bottom-[3px] left-[1px] right-0 top-[3px] bg-neutral-950 "
+                      />
+                    </motion.span>
+                  );
+                })}
+              </span>
             </p>
             <div className="flex gap-2 mt-6">
               <Link href="/#contact">

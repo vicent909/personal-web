@@ -6,7 +6,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
   Link,
@@ -14,13 +13,12 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownItem,
-  Button,
 } from "@nextui-org/react";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -46,7 +44,7 @@ export default function NavBar() {
 
   return (
     <Navbar
-      onMenuOpenChange={setIsMenuOpen}
+      // onMenuOpenChange={setIsMenuOpen}
       className={scrolled === true ? "navbar scrolled" : "navbar"}
     >
       <NavbarContent>
@@ -59,9 +57,14 @@ export default function NavBar() {
         /> */}
         <Dropdown className="sm:hidden">
           <DropdownTrigger className="sm:hidden">
-            <Button variant="shadow" className="w-fit px-0" endContent={<RxHamburgerMenu />}></Button>
+            <div className="bg-gray-300 p-3 rounded-xl">
+              <RxHamburgerMenu />
+            </div>
           </DropdownTrigger>
-          <DropdownMenu aria-label="Dynamic Actions" onAction={(key) => router.push('/#'+key)}>
+          <DropdownMenu
+            aria-label="Dynamic Actions"
+            onAction={(key) => router.push("/#" + key)}
+          >
             {/* {(item) => (
               <DropdownItem
                 key={item.key}
@@ -71,26 +74,10 @@ export default function NavBar() {
                 {item.label}
               </DropdownItem>
             )} */}
-            <DropdownItem
-              key="home"
-            >
-              Home
-            </DropdownItem>
-            <DropdownItem
-              key="projects"
-            >
-              Projects
-            </DropdownItem>
-            <DropdownItem
-              key="about"
-            >
-              About
-            </DropdownItem>
-            <DropdownItem
-              key="contact"
-            >
-              Contact me
-            </DropdownItem>
+            <DropdownItem key="home">Home</DropdownItem>
+            <DropdownItem key="projects">Projects</DropdownItem>
+            <DropdownItem key="about">About</DropdownItem>
+            <DropdownItem key="contact">Contact me</DropdownItem>
           </DropdownMenu>
         </Dropdown>
         <NavbarBrand>
@@ -189,7 +176,6 @@ export default function NavBar() {
             color="foreground"
             href="#"
             className={"navbar-link font-mono py-1"}
-            onClick={() => setIsMenuOpen(false)}
           >
             Home
           </Link>
@@ -197,7 +183,6 @@ export default function NavBar() {
             color="foreground"
             href="/#projects"
             className={"navbar-link font-mono py-1"}
-            onClick={() => setIsMenuOpen(false)}
           >
             Works
           </Link>
@@ -205,7 +190,6 @@ export default function NavBar() {
             color="foreground"
             href="/#about"
             className={"navbar-link font-mono py-1"}
-            onClick={() => setIsMenuOpen(false)}
           >
             About
           </Link>
@@ -213,7 +197,6 @@ export default function NavBar() {
             color="foreground"
             href="/#contact"
             className={"navbar-link font-mono py-1"}
-            onClick={() => setIsMenuOpen(false)}
           >
             Contact
           </Link>
